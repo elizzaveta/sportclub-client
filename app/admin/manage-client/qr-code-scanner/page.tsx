@@ -3,7 +3,8 @@ import React, {useEffect} from 'react';
 import {useRouter} from "next/navigation";
 // import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import {qrCodeDataType} from "@/types/qrCodeDataType";
-import { QrReader } from 'react-qr-reader';
+// import { QrReader } from 'react-qr-reader';
+import {QrScanner} from '@yudiel/react-qr-scanner';
 
 export default function QrCodeScannerPage() {
     const [qrCodeData, setQrCodeData] = React.useState<qrCodeDataType>();
@@ -19,14 +20,13 @@ export default function QrCodeScannerPage() {
     return (
         <div className='flex flex-col items-center'>
             <p className='text-3xl font-bold text-sky-600'>QR Code Scanner</p>
-            <QrReader
-                scanDelay={500}
-                onResult={(result, error) => {
-                    if (result) setQrCodeData(JSON.parse(result.getText()) as qrCodeDataType);
-                }}
-                className='w-96 h-96'
-                constraints={{ facingMode: 'user' }}
-            />
+            <div className='w-96'>
+                <QrScanner
+                    onDecode={(result) => {
+                        if (result) setQrCodeData(JSON.parse(result) as qrCodeDataType);
+                    }}
+                    onError={(error) => console.log(error?.message)}/>
+            </div>
             {/*<p>{JSON.stringify(qrCodeData)}</p>*/}
         </div>
     );
