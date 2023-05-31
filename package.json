@@ -25,7 +25,6 @@
     "react-calendar": "^4.2.1",
     "react-dom": "18.2.0",
     "react-phone-input-2": "^2.15.1",
-    "react-qr-barcode-scanner": "^1.0.6",
     "react-qr-reader": "^3.0.0-beta-1",
     "react-router-dom": "^6.11.2",
     "swr": "^2.1.5",
